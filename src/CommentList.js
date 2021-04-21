@@ -3,7 +3,7 @@ import axios from "axios";
 import Comment from "./Comment";
 
 const COMMENTLISTURL =
-  "/comments/hotflow?id=4467107636950632&mid=4467107636950632&max_id_type=0";
+  "https://m.weibo.cn/comments/hotflow?id=4467107636950632&mid=4467107636950632&max_id_type=0";
 
 function CommentList() {
   const [comments, setComments] = useState([]);
