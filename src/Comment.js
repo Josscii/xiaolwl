@@ -9,7 +9,7 @@ dayjs.locale("zh-cn");
 function Comment({
   comment: {
     text,
-    user: { screen_name, avatar_hd },
+    user: { screen_name, profile_image_url },
     created_at,
   },
 }) {
@@ -19,7 +19,7 @@ function Comment({
         <img
           className="w-6 h-6 rounded"
           alt="avatar"
-          src={"https://tvax1.sinaimg.cn/crop.0.0.132.132.180/" + avatar_hd.substring(avatar_hd.lastIndexOf('/') + 1)}
+          src={profile_image_url}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =
