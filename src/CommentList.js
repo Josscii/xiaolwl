@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Comment from "./Comment";
+import loaderSvg from "./oval.svg";
 
 const COMMENTLISTURL =
   "/comments/hotflow?id=4467107636950632&mid=4467107636950632&max_id_type=0";
@@ -31,11 +32,17 @@ function CommentList() {
     };
   });
 
+  const firstLoading = comments.length === 0;
+
   return (
     <div>
-      {comments.map((comment) => (
-        <Comment key={comment.id} comment={comment} />
-      ))}
+      {firstLoading ? (
+        <img className="mx-auto w-5 h-5" alt="loading" src={loaderSvg} />
+      ) : (
+        comments.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))
+      )}
     </div>
   );
 }
