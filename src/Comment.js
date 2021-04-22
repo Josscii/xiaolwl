@@ -19,7 +19,7 @@ function Comment({
         <img
           className="w-6 h-6 rounded"
           alt="avatar"
-          src={avatar_hd.replace("orj480", "crop.0.0.996.996.180")}
+          src={"https://tvax1.sinaimg.cn/crop.0.0.132.132.180/" + avatar_hd.substring(avatar_hd.lastIndexOf('/') + 1)}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =
