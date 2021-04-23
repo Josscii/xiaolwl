@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.new-item {
+  max-height: 0;
+  animation: grow 1s ease-in-out forwards;
+  -webkit-animation: grow 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes grow {
+  to {
+    max-height: 2000px;
+  }
+}
+
+@keyframes grow {
+  to {
+    max-height: 2000px;
+  }
+}
+
+span img {
+  display: inline;
+}

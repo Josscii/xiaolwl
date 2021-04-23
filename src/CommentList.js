@@ -33,6 +33,7 @@ function CommentList() {
   });
 
   const firstLoading = comments.length === 0;
+  const isRefresh = refreshCount > 0;
 
   return (
     <div>
@@ -40,7 +41,7 @@ function CommentList() {
         <img className="mx-auto w-5 h-5" alt="loading" src={loaderSvg} />
       ) : (
         comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
+          <Comment key={comment.id} isRefresh={isRefresh} comment={comment} />
         ))
       )}
     </div>

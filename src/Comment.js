@@ -12,9 +12,16 @@ function Comment({
     user: { screen_name, profile_image_url },
     created_at,
   },
+  isRefresh,
 }) {
+  let itemClassName = "py-3 border-b";
+
+  if (isRefresh) {
+    itemClassName += " new-item";
+  }
+
   return (
-    <div className="py-3 border-b">
+    <div className={itemClassName}>
       <div className="flex items-center">
         <img
           className="w-6 h-6 rounded"
