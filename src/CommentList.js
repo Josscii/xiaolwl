@@ -10,12 +10,29 @@ function CommentList() {
   const [comments, setComments] = useState([]);
   const [refreshCount, setRefreshCount] = useState(0);
 
+  const calculateNewComments = (last, current) => {
+    if (last.length === 0) {
+      return current.map((comment) => {
+        comment.isNew = false;
+        return comment;
+      });
+    } else {
+      return current.map((comment) => {
+        comment.isNew = !last.find((com) => com.id === comment.id);
+        return comment;
+      });
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(COMMENTLISTURL);
       const data = response.data;
       if (data.ok === 1) {
-        setComments(data.data.data);
+        const currentComments = data.data.data;
+        setComments((lastComments) =>
+          calculateNewComments(lastComments, currentComments)
+        );
       }
     };
 
@@ -33,7 +50,6 @@ function CommentList() {
   });
 
   const firstLoading = comments.length === 0;
-  const isRefresh = refreshCount > 0;
 
   return (
     <div>
@@ -41,7 +57,7 @@ function CommentList() {
         <img className="mx-auto w-5 h-5" alt="loading" src={loaderSvg} />
       ) : (
         comments.map((comment) => (
-          <Comment key={comment.id} isRefresh={isRefresh} comment={comment} />
+          <Comment key={comment.id} comment={comment} />
         ))
       )}
     </div>

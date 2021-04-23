@@ -11,12 +11,12 @@ function Comment({
     text,
     user: { screen_name, profile_image_url },
     created_at,
+    isNew,
   },
-  isRefresh,
 }) {
   let itemClassName = "py-3 border-b";
 
-  if (isRefresh) {
+  if (isNew) {
     itemClassName += " new-item";
   }
 
